@@ -7,15 +7,15 @@ function Player(gameStruct, position) constructor{
 	isHuman = false;
 	pos = position;
 	bank = {
-		"health" : STARTINGHEALTH,
-		"attack" : 0,
-		"wood" : 0,
-		"stone" : 0,
-		"iron" : 0,
-		"diamonds" : 0
-		"obsidian" : 0
-		"endpearl" : 0
-		"blazerod" : 0		
+		hearts : STARTINGHEALTH,
+		attack : 0,
+		wood : 0,
+		stone : 0,
+		iron : 0,
+		diamonds : 0,
+		obsidian : 0,
+		endpearl : 0,
+		blazerod : 0,		
 	};
 	game = gameStruct;
 	
@@ -38,15 +38,15 @@ function Player(gameStruct, position) constructor{
 	
 	static clearBank = function(){
 		bank = {
-			"health" : bank.health,
-			"attack" : 0,
-			"wood" : 0,
-			"stone" : 0,
-			"iron" : 0,
-			"diamonds" : 0
-			"obsidian" : 0
-			"endpearl" : 0
-			"blazerod" : 0		
+			hearts : bank.hearts,
+			attack : 0,
+			wood : 0,
+			stone : 0,
+			iron : 0,
+			diamonds : 0,
+			obsidian : 0,
+			endpearl : 0,
+			blazerod : 0,		
 		};
 	}
 	
@@ -57,7 +57,7 @@ function Player(gameStruct, position) constructor{
 	static travel= function(location, callback){
 		activeBuyDeck = buyDecks[$location];
 		if(instance_exists(o_renderer)){
-			o_renderer.adjustBuyRow({"player":self});
+			o_renderer.adjustBuyRow({player:self});
 		}
 		if(callback){
 			callback();
@@ -68,19 +68,24 @@ function Player(gameStruct, position) constructor{
 		deck = shuffle(discard)
 		discard.clear()
 		if(instance_exists(o_renderer)){
-			o_renderer.renderShuffle({"player":self});
+			o_renderer.renderShuffle({player:self});
 		}
 	}
 	
 	static draw = function(n, callback){
 		if( n > 0 ){
 			if(deck.size == 0){
-				shuffle();
+				if(discard.size > 0){
+					shuffle();
+				} else{
+					draw(-1, callback);
+					return;
+				}
 			}
 			var card = deck.pop();
 			hand.add(card)
 			if(instance_exists(o_renderer)){
-				o_renderer.adjustHand({"player":self});
+				o_renderer.adjustHand({ player:self});
 			}
 			draw(n - 1, callback);
 		} else{
@@ -95,8 +100,8 @@ function Player(gameStruct, position) constructor{
 			var card = hand.pop();
 			discard.add(card)
 			if(instance_exists(o_renderer)){
-				o_renderer.adjustHand({"player":self});
-				o_renderer.adjustDiscard({"player":self});
+				o_renderer.adjustHand({ player:self});
+				o_renderer.adjustDiscard({ player:self});
 			}
 			discardCard(n - 1, callback);
 		} else{
@@ -119,8 +124,8 @@ function Player(gameStruct, position) constructor{
 			hand = hand.remove(pos);
 			field.add(card);
 			if(instance_exists(o_renderer)){
-				o_renderer.adjustHand({"player":self});
-				o_renderer.adjustField({"player":self});
+				o_renderer.adjustHand({ player:self});
+				o_renderer.adjustField({ player:self});
 			}
 			card.play();
 			if(callback){
@@ -144,8 +149,8 @@ function Player(gameStruct, position) constructor{
 			activeBuyDeck = activeBuyDeck.remove(pos);
 			discard.add(card);
 			if(instance_exists(o_renderer)){
-				o_renderer.adjustBuyRow({"player":self});
-				o_renderer.adjustDiscard({"player":self});
+				o_renderer.adjustBuyRow({ player:self});
+				o_renderer.adjustDiscard({ player:self});
 			}
 			if(callback){
 				callback();
@@ -161,5 +166,7 @@ function Player(gameStruct, position) constructor{
 		clearBank();
 	}
 	
-	static play = function() ABSTRACT;
+	static play = function() {
+		throw "CHILDREN MUST IMPLEMENT ABSTRACT METHODS";
+	};
 }

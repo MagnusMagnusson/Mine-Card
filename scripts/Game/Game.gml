@@ -2,14 +2,15 @@ function Game() constructor{
 	players = new Array();
 	currentPlayerIndex = 0;
 	
-	static addPlayer = function(Player){
-		self.players.add(Player);
+	static addPlayer = function(player){
+		players.add(player);
 	}
 	
-	static star = function(){
+	static start = function(){
 		var p1, p2;
-		p1 = self.players.get(0);
-		p2 = self.players.get(1);
+		p1 = players.get(0);
+		p2 = players.get(1);
+		show_debug_message(p1.isHuman);
 		p1.draw(3, undefined);
 		p2.draw(5, undefined);
 		p1.travel(WORLDS.OVERWORLD);
@@ -22,7 +23,7 @@ function Game() constructor{
 	}
 	
 	static currentPlayer = function(){
-		return self.players[self.currentPlayerIndex];
+		return self.players.get(self.currentPlayerIndex);
 	}
 	
 	static playerPlay = function(){

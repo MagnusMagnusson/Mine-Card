@@ -1,4 +1,4 @@
-function HumanPlayer() constructor {
+function HumanPlayer(gameStruct, position ) :  Player(gameStruct, position) constructor {
 
 	isHuman = true;
 
