@@ -1,3 +1,4 @@
 
-xTarget = irandom(room_width);
-yTarget = irandom(room_height);
+xTarget = 0;
+yTarget = 0;
+facedown = false;
