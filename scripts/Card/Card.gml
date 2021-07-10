@@ -28,7 +28,11 @@ function Card(cardObject, _owner, cardState) constructor{
 			var r,a;
 			r = resources[i].resource;
 			a = resources[i].amount;
-			owner.bank[$ r] = owner.bank[$ r] + a;
+			try{		
+				owner.bank[$ r] = owner.bank[$ r] + a;
+			} catch(e){
+				show_debug_message(e);
+			}
 		}
 	}
 	
@@ -46,7 +50,11 @@ function Card(cardObject, _owner, cardState) constructor{
 							var r,a;
 							r = cost[i].resource;
 							a = cost[i].amount;
-							owner.bank[$ r] = owner.bank[$ r] - a;
+							try{
+								owner.bank[$ r] = owner.bank[$ r] - a;
+							} catch(e){
+								show_debug_message(e);
+							}
 						}
 						owner.buyCard(self, undefined);
 					}

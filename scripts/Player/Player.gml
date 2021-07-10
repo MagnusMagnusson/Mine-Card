@@ -68,7 +68,7 @@ function Player(gameStruct, position) constructor{
 			wood : 0,
 			stone : 0,
 			iron : 0,
-			diamonds : 0,
+			diamond : 0,
 			obsidian : 0,
 			endpearl : 0,
 			blazerod : 0,		
@@ -90,20 +90,18 @@ function Player(gameStruct, position) constructor{
 	}
 	
 	static shuffle = function(){
-		deck = shuffle(discard)
+		deck = discard.shuffle()
 		discard = new Array();
 		deck.forEach(function(c){c.state = CARDSTATES.DECK});
 		if(instance_exists(o_renderer)){
-			o_renderer.renderShuffle({player:me});
+			o_renderer.adjustDeck({player:me});
 		}
 	}
 	
 	static draw = function(n, callback){
 		if( n > 0 ){
 			if(deck.size == 0){
-				show_message("ZERO")
 				if(discard.size > 0){
-					show_message("shuffling")
 					shuffle();
 				} else{
 					draw(-1, callback);
@@ -199,8 +197,28 @@ function Player(gameStruct, position) constructor{
 	static endTurn = function(callback){
 		clearBank();
 		helper = callback;
+		clearField();
 		discardCard(hand.size,self.refreshHand);
 		
+	}
+	
+	static clearField = function(){
+		var deadField = field.filter(function(c) {
+			return c.strength == 0;
+		});
+		var aliveField = field.filter(function(c) {
+			return c.strength > 0;
+		});
+		deadField.forEach(function(c){
+			c.state = CARDSTATES.DISCARD;
+		});
+		discard = discard.concat(deadField);
+		field = aliveField;
+		
+		if(instance_exists(o_renderer)){
+			o_renderer.adjustField({player:me});
+			o_renderer.adjustDiscard({player:me});
+		}
 	}
 	
 	static refreshHand = function(){
@@ -217,6 +235,12 @@ function Player(gameStruct, position) constructor{
 			}
 		}
 		return true;
+	}
+	
+	static getHurt = function(){
+		var opp = game.opponent(me);
+		game.hurt(me, opp.bank.attack);
+		opp.bank.attack = 0;
 	}
 	
 	static play = function() {

@@ -6,6 +6,17 @@ function Game() constructor{
 		players.forEach(function(p){
 			p.setupDecks();
 		})
+		var p1, p2;
+		p1 = players.get(1);
+		p2 = players.get(0);
+		
+		with(o_heart){
+			if(y < room_height/2){
+				player = p1;
+			} else{
+				player = p2;
+			}
+		}
 	}
 	
 	static addPlayer = function(player){
@@ -26,7 +37,7 @@ function Game() constructor{
 	}
 	
 	static nextPlayer = function(){
-		self.currentPlayerIndex = (self.currentPlayerIndex + 1) % self.players.size;
+		me.currentPlayerIndex = (me.currentPlayerIndex + 1) % me.players.size;
 	}
 	
 	static currentPlayer = function(){
@@ -43,6 +54,7 @@ function Game() constructor{
 	
 	static endTurn = function(){
 		var player = currentPlayer();
+		player.isPlaying = false;
 		player.endTurn();
 		me.afterEndTurn();
 	}
@@ -50,6 +62,23 @@ function Game() constructor{
 	static afterEndTurn = function(){
 		me.nextPlayer();
 		me.playerPlay();
+	}
+	
+	static hurt = function(player, amount){
+		player.bank.hearts -= amount;
+		if(player.bank.hearts <= 0){
+			if(player.isHuman){
+				show_message("YOU WIN!");
+			} else{
+				show_message("YOU'VE LOST!");
+			}
+			
+			if(show_question("Play again?")){
+				game_restart();
+			} else{
+				game_end();
+			}
+		}
 	}
 	
 	static opponent = function(player){
