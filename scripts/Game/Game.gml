@@ -2,15 +2,11 @@ function Game() constructor{
 	players = new Array();
 	currentPlayerIndex = 0;
 	
-	
-	Game(){
-	}
-	
-	function addPlayer(Player){
+	static addPlayer = function(Player){
 		self.players.add(Player);
 	}
 	
-	function start(){
+	static star = function(){
 		var p1, p2;
 		p1 = self.players.get(0);
 		p2 = self.players.get(1);
@@ -21,30 +17,30 @@ function Game() constructor{
 		self.playerPlay();
 	}
 	
-	function nextPlayer(){
+	static nextPlayer = function(){
 		self.currentPlayerIndex = (self.currentPlayerIndex + 1) % self.players.size;
 	}
 	
-	function currentPlayer(){
+	static currentPlayer = function(){
 		return self.players[self.currentPlayerIndex];
 	}
 	
-	function playerPlay(){
+	static playerPlay = function(){
 		var player = self.currentPlayer();
 		player.play();
 	}
 	
-	function endTurn(){
+	static endTurn = function(){
 		var player = self.currentPlayer();
 		player.endTurn(self.afterEndTurn);
 	}
 	
-	function afterEndTurn(){
+	static afterEndTurn = function(){
 		self.nextPlayer();
 		self.playerPlay();
 	}
 	
-	function opponent(player){
+	static opponent = function(player){
 		return self.players.get((player.id + 1) % self.players.size);
 	}
 }

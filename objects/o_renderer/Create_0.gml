@@ -15,3 +15,9 @@ adjustDiscard = function(e){
 		e.callback();
 	}	
 }
+
+adjustBuyRow = function(e){
+	if(e.callback){
+		e.callback();
+	}	
+}

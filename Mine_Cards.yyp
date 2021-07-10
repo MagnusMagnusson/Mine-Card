@@ -5,6 +5,7 @@
     {"id":{"name":"o_renderer","path":"objects/o_renderer/o_renderer.yy",},"order":0,},
     {"id":{"name":"Player","path":"scripts/Player/Player.yy",},"order":2,},
     {"id":{"name":"scr_ArrayClass","path":"scripts/scr_ArrayClass/scr_ArrayClass.yy",},"order":0,},
+    {"id":{"name":"HumanPlayer","path":"scripts/HumanPlayer/HumanPlayer.yy",},"order":4,},
     {"id":{"name":"Game","path":"scripts/Game/Game.yy",},"order":0,},
   ],
   "Options": [
