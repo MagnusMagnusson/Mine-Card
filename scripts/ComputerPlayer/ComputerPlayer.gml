@@ -4,7 +4,7 @@ function ComputerPlayer(gameStruct, position ) :  Player(gameStruct, position) c
 
 	static play = function(){
 		isPlaying = true;
-		game.endTurn();
+		
 	}
 
 }

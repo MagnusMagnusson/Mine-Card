@@ -44,6 +44,10 @@ function Player(gameStruct, position) constructor{
 	static setupDecks = function(){
 		deck = setupDeck("startDeck", CARDSTATES.DECK);
 		buyDecks[$ WORLDS.OVERWORLD ] = setupDeck("overworld", CARDSTATES.STORE);
+		buyDecks[$ WORLDS.MINE ] = setupDeck("mine", CARDSTATES.STORE);
+		buyDecks[$ WORLDS.DEEPMINE ] = setupDeck("deepmine", CARDSTATES.STORE);
+		buyDecks[$ WORLDS.NETHER ] = setupDeck("nether", CARDSTATES.STORE);
+		buyDecks[$ WORLDS.END ] = setupDeck("end", CARDSTATES.STORE);
 		travel(WORLDS.OVERWORLD);
 		if(instance_exists(o_renderer)){
 			o_renderer.adjustDeck({player:me});
@@ -82,7 +86,7 @@ function Player(gameStruct, position) constructor{
 	}
 	
 	static travel = function(location, callback){
-		self.activeBuyDeck = buyDecks[$location];
+		me.activeBuyDeck = me.buyDecks[$location];
 		if(instance_exists(o_renderer)){
 			o_renderer.adjustBuyRow({player:me});
 		}
@@ -200,8 +204,30 @@ function Player(gameStruct, position) constructor{
 		clearBank();
 		helper = callback;
 		clearField();
+		shiftBuyDeck();
 		discardCard(hand.size,self.refreshHand);
-		
+	}
+	
+	static shiftBuyDeck = function(){
+		if(activeBuyDeck.size > 0){
+			var card = activeBuyDeck.get(0);
+			activeBuyDeck.remove(0);
+			activeBuyDeck.add(card);
+			if(instance_exists(o_renderer)){
+				o_renderer.adjustBuyRow({player:me});
+			}
+		}
+	}
+	
+	static burnHand = function(){
+		if(show_question("Are you sure you want to burn your hand. The cards in it will be permanently lost")){
+			for(var i = 0; i < hand.size; i++){
+				var card = hand.get(i);
+				instance_destroy(card.guiCard);
+				delete card;
+			}
+			hand.clear();
+		}
 	}
 	
 	static clearField = function(){
@@ -239,9 +265,9 @@ function Player(gameStruct, position) constructor{
 		return true;
 	}
 	
-	static getHurt = function(){
+	static getHurt = function(dam){
 		var opp = game.opponent(me);
-		game.hurt(me, opp.bank.attack);
+		game.hurt(me, opp.bank.attack + dam);
 		opp.bank.attack = 0;
 	}
 	

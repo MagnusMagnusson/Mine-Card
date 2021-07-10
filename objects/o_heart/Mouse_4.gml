@@ -1,3 +1,3 @@
 if(!player.isHuman && !player.isPlaying){
-	player.getHurt();
+	player.getHurt(0);
 }

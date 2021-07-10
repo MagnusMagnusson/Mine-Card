@@ -8,9 +8,7 @@
                  {"resource":"wood", "amount": 1}
             ],
             "cost" : [
-                {"resource":"wood", "amount": 2},
-                
-                {"resource":"attack", "amount": 3}
+                {"resource":"wood", "amount": 1}
             ],
             "strength": 0,
             "onPlay" : [
@@ -61,7 +59,7 @@
         },
         {
             "name" : "Bow",
-            "text" : "Target opponent discards a random card",
+            "text" : "opponent discards 1 card",
             "cid" : "bow",
             "resources" : [
             ],
@@ -70,7 +68,7 @@
             ],
             "strength": 0,
             "onPlay" : [
-                "oppDiscard"
+                "discard"
             ],
             "onDeath":[
 
@@ -81,11 +79,524 @@
             "text" : "",
             "cid" : "cow",
             "resources" : [
-                {"resource":"leather", "amount": 2}
+                {"resource":"leather", "amount": 1}
             ],
             "cost" : [
+                {"resource":"attack", "amount": 1}
             ],
-            "strength": 1,
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },
+        {
+            "name" : "Leather Helmet",
+            "text" : "",
+            "cid" : "leatherhelm",
+            "resources" : [
+                 {"resource":"hearts", "amount": 2}
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },
+        {
+            "name" : "Leather Boots",
+            "text" : "",
+            "cid" : "leatherboot",
+            "resources" : [
+                 {"resource":"hearts", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 1}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },
+        {
+            "name" : "Leather Pants",
+            "text" : "",
+            "cid" : "leatherpants",
+            "resources" : [
+                 {"resource":"hearts", "amount": 3}
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },
+        {
+            "name" : "Leather Shirt",
+            "text" : "",
+            "cid" : "leathershirt",
+            "resources" : [
+                 {"resource":"hearts", "amount": 4}
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 3}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },        
+        {
+            "name" : "Leather Shirt",
+            "text" : "",
+            "cid" : "leatherpants",
+            "resources" : [
+                 {"resource":"hearts", "amount": 4}
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 3}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Skeleton",
+            "text" : "Opponent discards 1 card",
+            "cid" : "skeleton",
+            "resources" : [
+                {"resource":"attack", "amount": 2}
+            ],
+            "cost" : [
+                {"resource":"attack", "amount": 3}
+            ],
+            "strength": 0,
+            "onPlay" : [
+                "discard"
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Zombie",
+            "text" : "",
+            "cid" : "zombie",
+            "resources" : [
+                {"resource":"attack", "amount": 3}
+            ],
+            "cost" : [
+                {"resource":"attack", "amount": 4}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Creeper",
+            "text" : "",
+            "cid" : "creeper",
+            "resources" : [
+                {"resource":"attack", "amount": 3},
+                {"resource":"stone", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"attack", "amount": 5}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Cat",
+            "text" : "Draw a card",
+            "cid" : "cat",
+            "resources" : [
+                {"resource":"hearts", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+                "draw"
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Villager",
+            "text" : "Draw 2 cards",
+            "cid" : "villager",
+            "resources" : [
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+                "draw","draw"
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Stone Pickaxe",
+            "text" : "",
+            "cid" : "stonepick",
+            "resources" : [
+                {"resource":"iron", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"stone", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Stone Axe",
+            "text" : "",
+            "cid" : "stoneaxe",
+            "resources" : [
+                {"resource":"wood", "amount": 2}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"stone", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Stone Sword",
+            "text" : "",
+            "cid" : "stonesword",
+            "resources" : [
+                {"resource":"attack", "amount": 2}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"stone", "amount": 1}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+
+        },       
+        {
+            "name" : "Stone Helmet",
+            "text" : "",
+            "cid" : "stonehelm",
+            "resources" : [
+                {"resource":"hearts", "amount": 2}
+            ],
+            "cost" : [
+                {"resource":"stone", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Spider",
+            "text" : "",
+            "cid" : "spider",
+            "resources" : [
+                {"resource":"attack", "amount": 4},
+                {"resource":"hearts", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"stone", "amount": 1},
+                {"resource":"attack", "amount": 4}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Cave Spider",
+            "text" : "",
+            "cid" : "cavespider",
+            "resources" : [
+                {"resource":"attack", "amount": 6},
+                {"resource":"heart", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"iron", "amount": 1},
+                {"resource":"attack", "amount": 5}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Iron Pickaxe",
+            "text" : "",
+            "cid" : "ironpick",
+            "resources" : [
+                {"resource":"diamond", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"iron", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Iron Axe",
+            "text" : "",
+            "cid" : "ironaxe",
+            "resources" : [
+                {"resource":"wood", "amount": 4}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"iron", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Iron Sword",
+            "text" : "",
+            "cid" : "ironsword",
+            "resources" : [
+                {"resource":"attack", "amount": 4}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"iron", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Iron Helmet",
+            "text" : "",
+            "cid" : "ironhelm",
+            "resources" : [
+                {"resource":"hearts", "amount": 4}
+            ],
+            "cost" : [
+                {"resource":"iron", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Iron Boots",
+            "text" : "",
+            "cid" : "ironboots",
+            "resources" : [
+                {"resource":"hearts", "amount": 3}
+            ],
+            "cost" : [
+                {"resource":"iron", "amount": 1}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Iron Pants",
+            "text" : "",
+            "cid" : "ironpants",
+            "resources" : [
+                {"resource":"hearts", "amount": 5}
+            ],
+            "cost" : [
+                {"resource":"iron", "amount": 3}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Iron Armor",
+            "text" : "",
+            "cid" : "ironshirt",
+            "resources" : [
+                {"resource":"hearts", "amount": 6}
+            ],
+            "cost" : [
+                {"resource":"iron", "amount": 4}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "End Dragon",
+            "text" : "Win The Game",
+            "cid" : "enddragon",
+            "resources" : [
+            ],
+            "cost" : [
+                {"resource":"attack", "amount": 10},
+                {"resource":"endpearl", "amount": 5}
+            ],
+            "strength": 0,
+            "onPlay" : [
+                "win"
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Eye of Ender",
+            "text" : "Draw a card",
+            "cid" : "endeye",
+            "resources" : [
+                {"resource":"endpearl", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"diamond", "amount": 1}
+            ],
+            "strength": 0,
+            "onPlay" : [
+                "draw"
+            ],
+            "onDeath":[
+
+            ]
+        },        
+        {
+            "name" : "Diamond Pickaxe",
+            "text" : "",
+            "cid" : "diamondpick",
+            "resources" : [
+                {"resource":"endpearl", "amount": 2},
+                {"resource":"diamond", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"diamond", "amount": 3}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Diamond Axe",
+            "text" : "",
+            "cid" : "diamondaxe",
+            "resources" : [
+                {"resource":"wood", "amount": 5}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"diamond", "amount": 3}
+            ],
+            "strength": 0,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        },       
+        {
+            "name" : "Diamond Sword",
+            "text" : "",
+            "cid" : "diamondsword",
+            "resources" : [
+                {"resource":"attack", "amount": 7}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1},
+                {"resource":"diamond", "amount": 2}
+            ],
+            "strength": 0,
             "onPlay" : [
             ],
             "onDeath":[
@@ -114,22 +625,97 @@
         "woodPick",
         "woodPick",
         "woodPick",
-        "bow",
+        "woodPick",
+        "woodPick",
         "bow",
         "bow",
         "cow",
-        "cow"
+        "cow",
+        "cow",
+        "cow",
+        "leathershirt",
+        "leatherhelm",
+        "leatherpants",
+        "leatherboot",
+        "skeleton",
+        "zombie",
+        "creeper",
+        "cat",
+        "cat",
+        "villager",
+        "villager"
     ],
      "mine":[
+        "skeleton",
+        "skeleton",
+        "zombie",
+        "zombie",
+        "creeper",
+        "creeper",
+        "spider",
+        "spider",
+        "spider",
+        "stonepick",
+        "stonepick",
+        "stonepick",
+        "stonepick",
+        "stonepick",
+        "stoneaxe",
+        "stoneaxe",
+        "stoneaxe",
+        "stoneaxe",
+        "stonesword",
+        "stonesword",
+        "stonesword",
+        "stonehelm"
 
      ],
      "deepmine":[
+        "cavespider",
+        "cavespider",
+        "creeper",
+        "creeper",
+        "spider",
+        "spider",
+        "skeleton",
+        "skeleton",
+        "ironpick",
+        "ironpick",
+        "ironpick",
+        "ironpick",
+        "ironpick",
+        "ironpick",
+        "ironaxe",
+        "ironaxe",
+        "ironaxe",
+        "ironsword",
+        "ironsword",
+        "ironsword",
+        "ironhelm",
+        "ironboots",
+        "ironpants",
+        "ironshirt"
 
      ],
      "nether":[
-
+        "endeye",
+        "endeye",
+        "endeye",
+        "endeye",
+        "diamondpick",
+        "diamondpick",
+        "diamondpick",
+        "diamondpick",
+        "diamondpick",
+        "diamondaxe",
+        "diamondaxe",
+        "diamondaxe",
+        "diamondsword",
+        "diamondsword",
+        "diamondsword"
      ],
      "end":[
+        "enddragon"
 
      ]
 }

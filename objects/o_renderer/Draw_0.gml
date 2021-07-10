@@ -1,7 +1,7 @@
 if(bank){
 	var wood, stone, iron, diamond, attack;
 	var xx,yy;
-	xx = room_width - 15 * 64;
+	xx = room_width - 17 * 64;
 	yy = room_height - 380;
 	var jump = 130;
 	var yoffset = 32;
@@ -23,6 +23,10 @@ if(bank){
 	xx+=jump;
 	draw_sprite(s_icon, ICONS_RESOURCE.IRON,xx,yy);
 	draw_text(xx + 64 + xoffset,yoffset + yy, bank.iron);
+	xx+=jump;
+	draw_sprite(s_icon, ICONS_RESOURCE.ENDERPEARL,xx,yy);
+	draw_text(xx + 64 + xoffset, yoffset+yy, bank.endpearl);
+	draw_set_valign(fa_top)
 	xx+=jump;
 	draw_sprite(s_icon, ICONS_RESOURCE.DIAMOND,xx,yy);
 	draw_text(xx + 64 + xoffset, yoffset+yy, bank.diamond);

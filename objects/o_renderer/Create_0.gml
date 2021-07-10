@@ -55,13 +55,18 @@ adjustDiscard = function(e){
 adjustBuyRow = function(e){
 	var player = e.player
 	var deck = player.getActiveDeck()
-	var j = 6;
+	var j = 5;
+	with(o_card){
+		if(self.card && self.card.owner.pos == player.pos && self.card.state == CARDSTATES.STORE){
+			xTarget = room_width * 2; 
+		}
+	}
 	for(var i = 0; i < deck.size; i++){
 		var card = deck.get(i).guiCard;
 		if(j > 0){
 			j--;
 			card.facedown = false;
-			card.xTarget =  LOCATIONS[e.player.pos].buyrow[0] - (card.sprite_width + 64) * j ;
+			card.xTarget =  LOCATIONS[e.player.pos].buyrow[0] - (card.sprite_width + 64) * (1+j) ;
 			card.yTarget = LOCATIONS[e.player.pos].buyrow[1];	
 		} else{
 			card.facedown = true;

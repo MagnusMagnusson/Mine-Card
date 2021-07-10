@@ -34,6 +34,24 @@ function Card(cardObject, _owner, cardState) constructor{
 				show_debug_message(e);
 			}
 		}
+		for(var i = 0; i < array_length(onPlay); i++){
+			var p = onPlay[i];
+			switch(p){
+				case "draw":{
+					owner.draw(1,undefined);
+					break;
+				}
+				case "discard":{
+					var opp = owner.game.opponent(owner);
+					opp.discardCard(1, undefined);
+					break;
+				}
+				case "win":{
+					var opp = owner.game.opponent(owner);
+					opp.getHurt(999999);
+				}
+			}
+		}
 	}
 	
 	static play = function(){
