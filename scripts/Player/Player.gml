@@ -37,6 +37,27 @@ function Player(gameStruct, position) constructor{
 	};
 	activeBuyDeck = undefined;
 
+	static setupDecks = function(){
+		deck = setupDeck("startDeck");
+		buyDecks[$ WORLDS.OVERWORLD ] = setupDeck("overworld");
+		if(instance_exists(o_renderer)){
+			o_renderer.adjustBuyRow({player:self});
+			o_renderer.adjustDeck({player:self});
+		}
+	}
+	
+	static setupDeck = function(deckId){
+		show_debug_message(deckId);
+		var d = global.database[$ deckId];
+		var _deck = new Array();
+		for(var i = 0; i < array_length(d); i++){
+			var cardInfo = database_get(d[i]);
+			var card = new Card(cardInfo, self);
+			_deck.add(card);
+		}
+		_deck.shuffle()
+		return _deck;
+	}
 	
 	static clearBank = function(){
 		bank = {

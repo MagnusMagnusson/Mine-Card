@@ -1,0 +1,138 @@
+{
+    "cards":[
+        {
+            "name" : "Wooden Axe",
+            "text" : "",
+            "cid" : "woodAxe",
+            "resources" : [
+                 {"resource":"wood", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 2},
+                
+                {"resource":"attack", "amount": 3}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },
+        {
+            "name" : "Wooden Sword",
+            "text" : "",
+            "cid" : "woodSword",
+            "resources" : [
+                {"resource":"attack", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },
+        {
+            "name" : "Wooden Pickaxe",
+            "text" : "",
+            "cid" : "woodPick",
+            "resources" : [
+                {"resource":"stone", "amount": 1}
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 2}
+            ],
+            "strength": 0,
+            "onPlay" : [
+
+            ],
+            "onDeath":[
+
+            ]
+
+        },
+        {
+            "name" : "Bow",
+            "text" : "Target opponent discards a random card",
+            "cid" : "bow",
+            "resources" : [
+            ],
+            "cost" : [
+                {"resource":"wood", "amount": 1}
+            ],
+            "strength": 0,
+            "onPlay" : [
+                "oppDiscard"
+            ],
+            "onDeath":[
+
+            ]
+        },
+        {
+            "name" : "Cow",
+            "text" : "",
+            "cid" : "cow",
+            "resources" : [
+            ],
+            "cost" : [
+                {"resource":"leather", "amount": 2}
+            ],
+            "strength": 1,
+            "onPlay" : [
+            ],
+            "onDeath":[
+
+            ]
+        }
+    ],
+    "startDeck" : [
+        "woodAxe",
+        "woodAxe",
+        "woodAxe",
+        "woodAxe",
+        "woodAxe",
+        "woodSword",
+        "woodSword",
+        "woodSword"
+    ],
+
+    "overworld" : [
+        "woodAxe",
+        "woodAxe",
+        "woodSword",
+        "woodSword",
+        "woodSword",
+        "woodPick",
+        "woodPick",
+        "woodPick",
+        "woodPick",
+        "woodPick",
+        "bow",
+        "bow",
+        "bow",
+        "cow",
+        "cow",
+        "cow",
+        "cow"
+    ],
+     "mine":[
+
+     ],
+     "deepmine":[
+
+     ],
+     "nether":[
+
+     ],
+     "end":[
+
+     ]
+}

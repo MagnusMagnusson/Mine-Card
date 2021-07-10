@@ -21,3 +21,9 @@ adjustBuyRow = function(e){
 		e.callback();
 	}	
 }
+
+adjustDeck= function(e){
+	if(e[$"callback"]){
+		e.callback();
+	}	
+}

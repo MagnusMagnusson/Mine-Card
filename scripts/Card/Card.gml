@@ -17,7 +17,10 @@ function Card(cardObject, _owner) constructor{
 	cid = cardObject.cid;
 	owner = _owner;
 	guiCard = instance_create_layer(0,0,layer_get_id("card_layer"), o_card);
-	id  = name + randomId(16);
+	with(guiCard){
+		card = other
+	}
+	id  = self.name + randomId(16);
 	
 	static play = function(){
 	}

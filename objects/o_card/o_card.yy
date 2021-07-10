@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "s_card",
+    "path": "sprites/s_card/s_card.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

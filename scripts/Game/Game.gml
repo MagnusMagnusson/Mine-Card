@@ -2,6 +2,12 @@ function Game() constructor{
 	players = new Array();
 	currentPlayerIndex = 0;
 	
+	static setup = function(){
+		players.forEach(function(p){
+			p.setupDecks();
+		})
+	}
+	
 	static addPlayer = function(player){
 		players.add(player);
 	}

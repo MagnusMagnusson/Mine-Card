@@ -6,7 +6,7 @@
     "path": "folders/Scripts/config.yy",
   },
   "resourceVersion": "1.0",
-  "name": "macros",
+  "name": "Database",
   "tags": [],
   "resourceType": "GMScript",
 }

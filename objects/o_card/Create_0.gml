@@ -1,6 +1,3 @@
-scale = 3;
-h = 35 * scale;
-w = 25 * scale;
 
-xTarget = x + 200;
-yTarget = y + 500;
+xTarget = irandom(room_width);
+yTarget = irandom(room_height);
