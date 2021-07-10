@@ -1,7 +1,7 @@
 function Game() constructor{
 	players = new Array();
 	currentPlayerIndex = 0;
-	
+	me = self;
 	static setup = function(){
 		players.forEach(function(p){
 			p.setupDecks();
@@ -35,20 +35,24 @@ function Game() constructor{
 	
 	static playerPlay = function(){
 		var player = self.currentPlayer();
+		if(instance_exists(o_renderer)){
+			o_renderer.bank = player.bank;
+		}
 		player.play();
 	}
 	
 	static endTurn = function(){
-		var player = self.currentPlayer();
-		player.endTurn(self.afterEndTurn);
+		var player = currentPlayer();
+		player.endTurn();
+		me.afterEndTurn();
 	}
 	
 	static afterEndTurn = function(){
-		self.nextPlayer();
-		self.playerPlay();
+		me.nextPlayer();
+		me.playerPlay();
 	}
 	
 	static opponent = function(player){
-		return self.players.get((player.pos + 1) % self.players.size);
+		return players.get((player.pos + 1) % players.size);
 	}
 }

@@ -81,9 +81,9 @@
             "text" : "",
             "cid" : "cow",
             "resources" : [
+                {"resource":"leather", "amount": 2}
             ],
             "cost" : [
-                {"resource":"leather", "amount": 2}
             ],
             "strength": 1,
             "onPlay" : [

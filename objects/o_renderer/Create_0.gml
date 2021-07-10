@@ -2,16 +2,18 @@ var halfY = sprite_get_height(s_card)/2
 
 LOCATIONS = [
 	{
-		discard : [room_width - 128,  room_height -  128 - halfY],
+		discard : [room_width - 128-32,  room_height -  128 - halfY],
 		deck : [room_width - 128 - 258, room_height - 128 - halfY],
-		buyrow : [128, room_height / 2 - halfY + 92],
+		buyrow : [room_width - 128-32, room_height / 2 - halfY + 92],
 		hand : [128,room_height - 128 - halfY] ,
+		field:  [128, room_height / 2 - halfY + 2*92],
 	},
 	{
-		discard : [room_width - 128,  128 - halfY],
+		discard : [room_width - 128-32,  128 - halfY],
 		deck : [room_width - 128 - 258, 128 - halfY],
-		buyrow : [128, room_height / 2  - halfY - 92],
+		buyrow : [room_width - 128-32, room_height / 2  - halfY - 92],
 		hand : [128, 128 - halfY],
+		field : [128, room_height / 2  - halfY - 2 * 92],
 	}
 ]
 
@@ -26,7 +28,7 @@ adjustHand = function(e){
 	var hand = player.hand
 	for(var i = 0; i < hand.size; i++){
 		var card = hand.get(i).guiCard;
-		card.facedown = !player.pos == 1;
+		card.facedown = !player.isHuman;
 		card.xTarget = (card.sprite_width + 64) * i + LOCATIONS[e.player.pos].hand[0];
 		card.yTarget = LOCATIONS[e.player.pos].hand[1];	
 		
@@ -59,7 +61,7 @@ adjustBuyRow = function(e){
 		if(j > 0){
 			j--;
 			card.facedown = false;
-			card.xTarget = (card.sprite_width + 64) * j + LOCATIONS[e.player.pos].buyrow[0];
+			card.xTarget =  LOCATIONS[e.player.pos].buyrow[0] - (card.sprite_width + 64) * j ;
 			card.yTarget = LOCATIONS[e.player.pos].buyrow[1];	
 		} else{
 			card.facedown = true;
@@ -88,15 +90,18 @@ adjustDeck = function(e){
 
 
 adjustField = function(e){
-	var deck = e.player.deck;
-	for(var i = 0; i < deck.size; i++){
-		var card = deck.get(i).guiCard;
-		card.facedown = true;
-		card.xTarget = LOCATIONS[e.player.pos].deck[0];
-		card.yTarget = LOCATIONS[e.player.pos].deck[1];
+	var field = e.player.field;
+	for(var i = 0; i < field.size; i++){
+		var card = field.get(i).guiCard;
+		card.facedown = false;
+		card.xTarget = LOCATIONS[e.player.pos].field[0] + i*0.75*(sprite_get_width(s_card));
+		card.yTarget = LOCATIONS[e.player.pos].field[1];
+		card.depth = 100 - i;
 	}
 	
 	if(e[$"callback"]){
 		e.callback();
 	}	
 }
+
+bank = undefined;

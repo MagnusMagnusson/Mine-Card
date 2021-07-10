@@ -23,6 +23,15 @@ function Card(cardObject, _owner, cardState) constructor{
 	}
 	id  = self.name + randomId(16);
 	
+	static activate = function(){
+		for(var i = 0; i < array_length(resources); i++){
+			var r,a;
+			r = resources[i].resource;
+			a = resources[i].amount;
+			owner.bank[$ r] = owner.bank[$ r] + a;
+		}
+	}
+	
 	static play = function(){
 		if(guiCard.facedown){
 			return;
@@ -30,7 +39,17 @@ function Card(cardObject, _owner, cardState) constructor{
 		switch(state){
 			case CARDSTATES.STORE : {
 				if(owner.isPlaying && owner.isHuman){
-					owner.buyCard(self, undefined);
+					if(owner.affords(cost)){
+						show_debug_message(cost);
+						show_debug_message(owner.bank);
+						for(var i = 0; i < array_length(cost); i++){
+							var r,a;
+							r = cost[i].resource;
+							a = cost[i].amount;
+							owner.bank[$ r] = owner.bank[$ r] - a;
+						}
+						owner.buyCard(self, undefined);
+					}
 				}
 				break;
 			}

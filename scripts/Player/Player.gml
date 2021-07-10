@@ -8,6 +8,7 @@ function Player(gameStruct, position) constructor{
 	isPlaying = false;
 	pos = position;
 	me = self;
+	helper = undefined;
 	
 	bank = {
 		hearts : STARTINGHEALTH,
@@ -15,7 +16,7 @@ function Player(gameStruct, position) constructor{
 		wood : 0,
 		stone : 0,
 		iron : 0,
-		diamonds : 0,
+		diamond : 0,
 		obsidian : 0,
 		endpearl : 0,
 		blazerod : 0,		
@@ -160,6 +161,8 @@ function Player(gameStruct, position) constructor{
 				o_renderer.adjustField({player:me});
 			}
 			
+			card.activate();
+			
 			if(callback){
 				callback();
 			}			
@@ -193,10 +196,27 @@ function Player(gameStruct, position) constructor{
 		}
 	}
 	
-	static endTurn = function(){
-		discardCard(discard.size,undefined);
-		draw(5, undefined);
+	static endTurn = function(callback){
 		clearBank();
+		helper = callback;
+		discardCard(hand.size,self.refreshHand);
+		
+	}
+	
+	static refreshHand = function(){
+		draw(5, helper);
+	}
+	
+	static affords = function(resourceArray){
+		for(var i = 0; i < array_length(resourceArray); i++){
+			var r,a;
+			r = resourceArray[i].resource;
+			a = resourceArray[i].amount;
+			if(bank[$ r] < a){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	static play = function() {
