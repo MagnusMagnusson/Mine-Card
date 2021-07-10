@@ -40,20 +40,20 @@ function Player(gameStruct, position) constructor{
 	};
 
 	static setupDecks = function(){
-		deck = setupDeck("startDeck");
-		buyDecks[$ WORLDS.OVERWORLD ] = setupDeck("overworld");
+		deck = setupDeck("startDeck", CARDSTATES.DECK);
+		buyDecks[$ WORLDS.OVERWORLD ] = setupDeck("overworld", CARDSTATES.STORE);
 		travel(WORLDS.OVERWORLD);
 		if(instance_exists(o_renderer)){
 			o_renderer.adjustDeck({player:me});
 		}
 	}
 	
-	static setupDeck = function(deckId){
+	static setupDeck = function(deckId, state){
 		var d = global.database[$ deckId];
 		var _deck = new Array();
 		for(var i = 0; i < array_length(d); i++){
 			var cardInfo = database_get(d[i]);
-			var card = new Card(cardInfo, self);
+			var card = new Card(cardInfo, me, state);
 			_deck.add(card);
 		}
 		_deck.shuffle()
@@ -78,7 +78,7 @@ function Player(gameStruct, position) constructor{
 		return self.activeBuyDeck;
 	}
 	
-	static travel= function(location, callback){
+	static travel = function(location, callback){
 		self.activeBuyDeck = buyDecks[$location];
 		if(instance_exists(o_renderer)){
 			o_renderer.adjustBuyRow({player:me});
@@ -90,7 +90,8 @@ function Player(gameStruct, position) constructor{
 	
 	static shuffle = function(){
 		deck = shuffle(discard)
-		discard.clear()
+		discard = new Array();
+		deck.forEach(function(c){c.state = CARDSTATES.DECK});
 		if(instance_exists(o_renderer)){
 			o_renderer.renderShuffle({player:me});
 		}
@@ -111,6 +112,7 @@ function Player(gameStruct, position) constructor{
 			var card = deck.last();
 			deck.remove(-1)
 			hand.add(card)
+			card.state = CARDSTATES.HAND;
 			draw(n - 1, callback);
 		} else{			
 			if(instance_exists(o_renderer)){
@@ -124,8 +126,10 @@ function Player(gameStruct, position) constructor{
 	
 	static discardCard = function(n, callback){
 		if( n > 0 && hand.size > 0 ){
-			var card = hand.pop();
+			var card = hand.last();
+			hand.remove(-1)
 			discard.add(card)
+			card.state = CARDSTATES.DISCARD;
 			if(instance_exists(o_renderer)){
 				o_renderer.adjustHand({player:me});
 				o_renderer.adjustDiscard({player:me});
@@ -150,11 +154,12 @@ function Player(gameStruct, position) constructor{
 		if(pos >= 0){
 			hand = hand.remove(pos);
 			field.add(card);
+			card.state = CARDSTATES.FIELD;
 			if(instance_exists(o_renderer)){
 				o_renderer.adjustHand({player:me});
 				o_renderer.adjustField({player:me});
 			}
-			card.play();
+			
 			if(callback){
 				callback();
 			}			
@@ -175,6 +180,7 @@ function Player(gameStruct, position) constructor{
 		if(pos >= 0){
 			activeBuyDeck = activeBuyDeck.remove(pos);
 			discard.add(card);
+			card.state = CARDSTATES.DISCARD;
 			if(instance_exists(o_renderer)){
 				o_renderer.adjustBuyRow({player:me});
 				o_renderer.adjustDiscard({player:me});

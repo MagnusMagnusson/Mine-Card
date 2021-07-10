@@ -7,7 +7,7 @@ function randomId(n){
 	return str;
 }
 
-function Card(cardObject, _owner) constructor{
+function Card(cardObject, _owner, cardState) constructor{
 	name = cardObject.name;
 	text = cardObject.text;
 	resources = cardObject.resources;
@@ -16,6 +16,7 @@ function Card(cardObject, _owner) constructor{
 	onPlay = cardObject.onPlay;
 	cid = cardObject.cid;
 	owner = _owner;
+	state = cardState
 	guiCard = instance_create_layer(0,0,layer_get_id("card_layer"), o_card);
 	with(guiCard){
 		card = other
@@ -23,6 +24,28 @@ function Card(cardObject, _owner) constructor{
 	id  = self.name + randomId(16);
 	
 	static play = function(){
+		if(guiCard.facedown){
+			return;
+		}
+		switch(state){
+			case CARDSTATES.STORE : {
+				if(owner.isPlaying && owner.isHuman){
+					owner.buyCard(self, undefined);
+				}
+				break;
+			}
+			case CARDSTATES.FIELD : {
+				if(!owner.isPlaying && !owner.isHuman){
+					owner.discardCard(self, undefined);
+				}
+				break;
+			}
+			case CARDSTATES.HAND : {
+				if(owner.isPlaying && owner.isHuman){
+					owner.playCard(self, undefined);
+				}
+			}				
+		}
 	}
 	
 }

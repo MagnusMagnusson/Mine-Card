@@ -14,9 +14,10 @@ function Game() constructor{
 	
 	static start = function(){
 		var p1, p2;
-		p1 = players.get(0);
-		p2 = players.get(1);
-		show_debug_message(p1.isHuman);
+		currentPlayerIndex = choose(0,1);
+		p1 = currentPlayer();
+		p2 = opponent(p1);
+		
 		p1.draw(3, undefined);
 		p2.draw(5, undefined);
 		p1.travel(WORLDS.OVERWORLD);
@@ -48,6 +49,6 @@ function Game() constructor{
 	}
 	
 	static opponent = function(player){
-		return self.players.get((player.id + 1) % self.players.size);
+		return self.players.get((player.pos + 1) % self.players.size);
 	}
 }

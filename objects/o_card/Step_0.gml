@@ -13,3 +13,10 @@ if(y != yTarget){
 		y -= 3*(y-yTarget) / room_speed;
 	}
 }
+
+
+if(isHovering){
+	hoverCounter++;
+} else{
+	hoverCounter = 0;
+}

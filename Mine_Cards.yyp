@@ -1,7 +1,10 @@
 {
   "resources": [
+    {"id":{"name":"medFont","path":"fonts/medFont/medFont.yy",},"order":0,},
     {"id":{"name":"s_icon","path":"sprites/s_icon/s_icon.yy",},"order":0,},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},"order":2,},
+    {"id":{"name":"s_grass","path":"sprites/s_grass/s_grass.yy",},"order":2,},
+    {"id":{"name":"bigFont","path":"fonts/bigFont/bigFont.yy",},"order":1,},
     {"id":{"name":"enums","path":"scripts/enums/enums.yy",},"order":1,},
     {"id":{"name":"o_renderer","path":"objects/o_renderer/o_renderer.yy",},"order":0,},
     {"id":{"name":"o_test","path":"objects/o_test/o_test.yy",},"order":1,},
@@ -9,7 +12,7 @@
     {"id":{"name":"Database","path":"scripts/Database/Database.yy",},"order":0,},
     {"id":{"name":"scr_ArrayClass","path":"scripts/scr_ArrayClass/scr_ArrayClass.yy",},"order":0,},
     {"id":{"name":"Card","path":"scripts/Card/Card.yy",},"order":3,},
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":5,},
+    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":3,},
     {"id":{"name":"HumanPlayer","path":"scripts/HumanPlayer/HumanPlayer.yy",},"order":1,},
     {"id":{"name":"s_card","path":"sprites/s_card/s_card.yy",},"order":0,},
     {"id":{"name":"o_card","path":"objects/o_card/o_card.yy",},"order":2,},
@@ -33,12 +36,13 @@
   ],
   "Folders": [
     {"folderPath":"folders/Scripts.yy","order":0,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/util.yy","order":3,"resourceVersion":"1.0","name":"util","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Objects.yy","order":4,"resourceVersion":"1.0","name":"Objects","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Sprites.yy","order":6,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/util.yy","order":1,"resourceVersion":"1.0","name":"util","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects.yy","order":2,"resourceVersion":"1.0","name":"Objects","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Sprites.yy","order":4,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/icons.yy","order":1,"resourceVersion":"1.0","name":"icons","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/game.yy","order":7,"resourceVersion":"1.0","name":"game","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/config.yy","order":8,"resourceVersion":"1.0","name":"config","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Fonts.yy","order":5,"resourceVersion":"1.0","name":"Fonts","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

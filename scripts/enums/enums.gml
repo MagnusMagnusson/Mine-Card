@@ -25,3 +25,12 @@ function iconGet(resource){
 	}
 	return ICONS_RESOURCE.WOOD;
 }
+
+enum CARDSTATES {
+	VOID,
+	STORE,
+	DISCARD,
+	DECK,
+	HAND,
+	FIELD
+}
