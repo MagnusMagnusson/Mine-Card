@@ -15,6 +15,9 @@ if(bank){
 	draw_sprite(s_icon, ICONS_RESOURCE.WOOD,xx,yy);
 	draw_text(xx + xoffset+ 64 , yoffset + yy, bank.wood);
 	xx+=jump;
+	draw_sprite(s_icon, ICONS_RESOURCE.LEATHER,xx,yy);
+	draw_text(xx + xoffset+ 64 , yoffset + yy, bank.leather);
+	xx+=jump;
 	draw_sprite(s_icon, ICONS_RESOURCE.STONE,xx,yy);
 	draw_text(xx + 64 +xoffset ,yoffset + yy, bank.stone);
 	xx+=jump;

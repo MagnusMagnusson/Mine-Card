@@ -67,7 +67,7 @@ function Game() constructor{
 	static hurt = function(player, amount){
 		player.bank.hearts -= amount;
 		if(player.bank.hearts <= 0){
-			if(player.isHuman){
+			if(!player.isHuman){
 				show_message("YOU WIN!");
 			} else{
 				show_message("YOU'VE LOST!");

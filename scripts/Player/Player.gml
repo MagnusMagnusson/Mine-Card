@@ -19,7 +19,8 @@ function Player(gameStruct, position) constructor{
 		diamond : 0,
 		obsidian : 0,
 		endpearl : 0,
-		blazerod : 0,		
+		blazerod : 0,	
+		leather : 0,
 	};
 	game = gameStruct;
 	
@@ -72,6 +73,7 @@ function Player(gameStruct, position) constructor{
 			obsidian : 0,
 			endpearl : 0,
 			blazerod : 0,		
+			leather : 0,
 		};
 	}
 	

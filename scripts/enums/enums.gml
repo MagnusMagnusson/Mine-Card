@@ -8,10 +8,12 @@ enum WORLDS {
 
 
 enum ICONS_RESOURCE{
-	WOOD = 4,
-	ATTACK = 3,
-	STONE = 2,
-	IRON = 1,
+	WOOD = 6,
+	ATTACK = 5,
+	STONE = 4,
+	LEATHER = 3,
+	IRON = 2,
+	HEART = 1,
 	DIAMOND = 0,
 }
 
@@ -22,6 +24,7 @@ function iconGet(resource){
 		case "iron" : return ICONS_RESOURCE.IRON;
 		case "diamond": return ICONS_RESOURCE.DIAMOND;
 		case "attack": return ICONS_RESOURCE.ATTACK;
+		case "leather": return ICONS_RESOURCE.LEATHER;
 	}
 	return ICONS_RESOURCE.WOOD;
 }
