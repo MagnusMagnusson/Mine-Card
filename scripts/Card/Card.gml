@@ -15,6 +15,7 @@ function Card(cardObject, _owner) constructor{
 	cost = cardObject.cost;
 	onPlay = cardObject.onPlay;
 	owner = _owner;
+	guiCard = instance_create_layer(0,0,layer_get_id("card_layer"), o_card);
 	id  = name + randomId(16);
 	
 	static play = function(){

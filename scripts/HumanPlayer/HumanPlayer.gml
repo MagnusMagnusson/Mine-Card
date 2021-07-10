@@ -3,7 +3,7 @@ function HumanPlayer(gameStruct, position ) :  Player(gameStruct, position) cons
 	isHuman = true;
 
 	static play = function(){
-		show_message("HOOMAN IS PLAYING!");
+		isPlaying = true;
 	}
 
 }

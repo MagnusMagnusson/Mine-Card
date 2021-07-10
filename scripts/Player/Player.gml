@@ -5,7 +5,9 @@ function Player(gameStruct, position) constructor{
 	discard = new Array();
 	field = new Array();
 	isHuman = false;
+	isPlaying = false;
 	pos = position;
+	
 	bank = {
 		hearts : STARTINGHEALTH,
 		attack : 0,
