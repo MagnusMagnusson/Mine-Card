@@ -4,6 +4,7 @@ function Player(gameStruct, position) constructor{
 	deck = new Array();
 	discard = new Array();
 	field = new Array();
+	isHuman = false;
 	pos = position;
 	bank = {
 		"health" : STARTINGHEALTH,
