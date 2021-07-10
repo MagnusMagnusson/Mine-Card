@@ -1,5 +1,9 @@
 {
   "resources": [
+    {"id":{"name":"macros","path":"scripts/macros/macros.yy",},"order":3,},
+    {"id":{"name":"enums","path":"scripts/enums/enums.yy",},"order":1,},
+    {"id":{"name":"o_renderer","path":"objects/o_renderer/o_renderer.yy",},"order":0,},
+    {"id":{"name":"Player","path":"scripts/Player/Player.yy",},"order":2,},
     {"id":{"name":"scr_ArrayClass","path":"scripts/scr_ArrayClass/scr_ArrayClass.yy",},"order":0,},
     {"id":{"name":"Game","path":"scripts/Game/Game.yy",},"order":0,},
   ],
@@ -18,8 +22,9 @@
   },
   "RoomOrderNodes": [],
   "Folders": [
-    {"folderPath":"folders/game.yy","order":0,"resourceVersion":"1.0","name":"game","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Scripts.yy","order":0,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/util.yy","order":3,"resourceVersion":"1.0","name":"util","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects.yy","order":4,"resourceVersion":"1.0","name":"Objects","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

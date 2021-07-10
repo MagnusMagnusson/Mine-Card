@@ -1,0 +1,7 @@
+enum WORLDS {
+	OVERWORLD,
+	MINE,
+	DEEPMINE,
+	NETHER,
+	END
+}
