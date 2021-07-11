@@ -1,0 +1,2 @@
+
+gameStruct.start();

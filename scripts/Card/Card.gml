@@ -54,13 +54,21 @@ function Card(cardObject, _owner, cardState) constructor{
 		}
 	}
 	
+	static convertedCost = function(){
+		var c = 0;
+		for(var i = 0; i < array_length(cost); i++){
+			c += cost[i].amount;
+		}
+		return c;
+	}
+	
 	static play = function(){
-		if(guiCard.facedown){
+		if(guiCard.facedown || !owner.isPlaying){
 			return;
 		}
 		switch(state){
 			case CARDSTATES.STORE : {
-				if(owner.isPlaying && owner.isHuman){
+				if(owner.isPlaying){
 					if(owner.affords(cost)){
 						show_debug_message(cost);
 						show_debug_message(owner.bank);
@@ -80,9 +88,6 @@ function Card(cardObject, _owner, cardState) constructor{
 				break;
 			}
 			case CARDSTATES.FIELD : {
-				if(!owner.isPlaying && !owner.isHuman){
-					owner.discardCard(self, undefined);
-				}
 				break;
 			}
 			case CARDSTATES.HAND : {

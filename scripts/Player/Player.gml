@@ -220,7 +220,7 @@ function Player(gameStruct, position) constructor{
 	}
 	
 	static burnHand = function(){
-		if(show_question("Are you sure you want to burn your hand. The cards in it will be permanently lost")){
+		if(!isHuman || show_question("Are you sure you want to burn your hand. The cards in it will be permanently lost")){
 			for(var i = 0; i < hand.size; i++){
 				var card = hand.get(i);
 				instance_destroy(card.guiCard);
